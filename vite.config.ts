@@ -1,6 +1,7 @@
 import React from "@vitejs/plugin-react-swc";
 import { type UserConfig, defineConfig } from "vite";
 import VitePluginMetaEnv from "vite-plugin-meta-env";
+import UnoCSS from "unocss/vite";
 
 export default defineConfig(async ({ command, mode, isPreview }) => {
   const { version } = await import("./package.json");
@@ -18,10 +19,7 @@ export default defineConfig(async ({ command, mode, isPreview }) => {
   };
 
   return {
-    plugins: [
-      VitePluginMetaEnv(metaEnv, "import.meta.env"),
-      React(),
-    ],
+    plugins: [VitePluginMetaEnv(metaEnv, "import.meta.env"), React(), UnoCSS()],
     server: {
       port: 8080,
     },
